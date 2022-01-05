@@ -1,0 +1,41 @@
+
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: $font-type;
+  font-weight: $font-weight-medium;
+}
+
+body{
+    color: $pf-color;
+}
+
+h1, .h1 {
+    font-weight: $font-weight-bold;
+    color: $pf-color;
+    margin: 0 0 0 0;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+h2, .h2{
+    font-weight: $font-weight-bold;
+    color: $sf-color;
+    margin: 0 0 0 0;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+h3, .h3{
+    color: $pf-color;
+    margin: 0 0 0 0;
+}

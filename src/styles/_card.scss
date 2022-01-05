@@ -1,0 +1,15 @@
+.standard{
+    background-color: $sb-color;
+    margin: 1rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.stretch-card{
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+
+    >.card{
+        width: 100%;
+    }
+}
