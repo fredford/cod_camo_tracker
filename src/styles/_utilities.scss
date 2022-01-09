@@ -21,3 +21,20 @@
     margin-right: auto;
 }
 
+
+.no-margin{
+    margin: 0;
+}
+
+.no-padding{
+    padding: 0;
+}
+
+.default-bg{
+    background-color: $pf-color;
+}
+
+.default-fg{
+    background-color: $sf-color;
+}
+
