@@ -12,7 +12,15 @@ import Damascus from "./pages/Damascus";
 
 import { Route, Routes } from "react-router-dom";
 
+import descriptionList from "./data/Atomic/Guns/Descriptions/arDescriptions";
+import ars from "./data/Atomic/Guns/assaultRifles";
+
 function App() {
+  var data = JSON.parse(localStorage.getItem("data"));
+
+  if (data === null) {
+    data = starterData;
+  }
   return (
     <div className="App">
       <NavBar />
@@ -21,7 +29,7 @@ function App() {
         <Route path="/dmultra" element={<DMUltra />} />
         <Route path="/darkmatter" element={<DarkMatter />} />
         <Route path="/darkaether" element={<DarkAether />} />
-        <Route path="/atomic" element={<Atomic />} />
+        <Route path="/atomic" element={<Atomic data={data} />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<Dashboard />} />
       </Routes>
@@ -30,3 +38,120 @@ function App() {
 }
 
 export default App;
+
+const starterData = {
+  "Assault Rifles": [
+    {
+      name: "STG44",
+      required: false,
+      progress: {
+        "Pack Tactics": {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Surgical: {
+          completed: false,
+          total: 100,
+          current: 10,
+        },
+        "Predatory Ambition": {
+          completed: true,
+          total: 100,
+          current: 0,
+        },
+        Reptilian: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Deadeye: {
+          completed: false,
+          total: 100,
+          current: 20,
+        },
+        Berserker: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Wildcat: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Survivalist: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Mindgames: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        "Death Artist": {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+      },
+    },
+    {
+      name: "Automaton",
+      required: false,
+      progress: {
+        "Pack Tactics": {
+          completed: true,
+          total: 100,
+          current: 0,
+        },
+        Surgical: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        "Predatory Ambition": {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Reptilian: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Deadeye: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Berserker: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Wildcat: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Survivalist: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        Mindgames: {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+        "Death Artist": {
+          completed: false,
+          total: 100,
+          current: 0,
+        },
+      },
+    },
+  ],
+};
