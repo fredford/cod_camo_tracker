@@ -1,0 +1,39 @@
+.class-section{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+}
+
+.weapon-section{
+    position: relative;
+    width: 200px;
+}
+
+.camo-progress{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);
+    margin-top: 5px;
+}
+
+.camo{
+    height: auto;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.item-container{
+    display: flex;
+}
+
+.camo-name{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    text-align: center;
+    background-color: $tb-color;
+}

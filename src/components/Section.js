@@ -5,13 +5,15 @@ export default function Section({ name, value }) {
   return (
     <div key={name}>
       <h2>{name}</h2>
-      {value.map((item) => {
-        return (
-          <div key={item.name}>
-            <Item item={item} section={name} />
-          </div>
-        );
-      })}
+      <div className="class-section">
+        {value.map((item, index) => {
+          return (
+            <div className="card standard weapon-section" key={index}>
+              <Item item={item} section={name} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

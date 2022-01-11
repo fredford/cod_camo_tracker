@@ -1,6 +1,9 @@
 import React from "react";
+import packTactics from "../assets/atomic/pack-tactics.png";
 
 export default function Item(props) {
+  console.log("here");
+  console.log(props.item);
   const onChange = (e) => {
     console.log(e);
     var oldData = JSON.parse(localStorage.getItem("data"));
@@ -19,8 +22,20 @@ export default function Item(props) {
     });
   };
   return (
-    <div className="card standard">
-      <h3 className="margin-left">{props.item.name}</h3>
+    <div className="">
+      <div className="camo-name card">
+        <h3>{props.item.name}</h3>
+      </div>
+      <div className="camo-progress">
+        {Object.keys(props.item.camos).map((key) => (
+          <img
+            src={packTactics}
+            alt={props.item.camos[key].description}
+            className="camo"
+          />
+        ))}
+      </div>
+      {/*
       {Object.entries(props.item.progress).map((camo) => {
         return (
           <div key={camo[0]}>
@@ -37,6 +52,7 @@ export default function Item(props) {
           </div>
         );
       })}
+    */}
     </div>
   );
 }
