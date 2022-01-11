@@ -1,5 +1,5 @@
 import React from "react";
-import packTactics from "../assets/atomic/pack-tactics.png";
+import camoFiles from "../data/Atomic/camoFiles";
 
 export default function Item(props) {
   console.log("here");
@@ -29,7 +29,7 @@ export default function Item(props) {
       <div className="camo-progress">
         {Object.keys(props.item.camos).map((key) => (
           <img
-            src={packTactics}
+            src={camoFiles[key]}
             alt={props.item.camos[key].description}
             className="camo"
           />

@@ -14,10 +14,13 @@ import { Route, Routes } from "react-router-dom";
 
 import weapons from "./data/weapons";
 
+import atomicCamos from "./assets/atomic/atomicCamos";
+
 function App() {
   var data = JSON.parse(localStorage.getItem("data"));
 
   console.log(weapons);
+  console.log(atomicCamos);
 
   if (data === null) {
     data = weapons;
