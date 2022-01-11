@@ -1,13 +1,4 @@
-const weapons = [
-  "STG44",
-  "Automaton",
-  "Itra Burst",
-  "Bar",
-  "AS44",
-  "NZ-41",
-  "Volkssturmgewehr",
-  "Cooper Carbine",
-];
+import gunList from "../gunList";
 
 const stgDescriptions = {
   Survivalist:
@@ -87,7 +78,7 @@ const extendedDescriptions = [
 function setDescriptions() {
   var obj = {};
   for (let i = 0; i < extendedDescriptions.length; i++) {
-    obj[weapons[i]] = { ...descriptions, ...extendedDescriptions[i] };
+    obj[gunList["Assault Rifles"][i]] = { ...descriptions, ...extendedDescriptions[i] };
   }
   return obj;
 }

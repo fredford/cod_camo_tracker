@@ -1,4 +1,4 @@
-const weapons = ["MP-40", "Sten", "M1928", "Owen Gun", "Type 100", "PPSh-41"];
+import gunList from "../gunList";
 
 const mp40Descriptions = {
   Survivalist: "",
@@ -58,7 +58,7 @@ const extendedDescriptions = [
 function setDescriptions() {
   var obj = {};
   for (let i = 0; i < extendedDescriptions.length; i++) {
-    obj[weapons[i]] = { ...descriptions, ...extendedDescriptions[i] };
+    obj[gunList["Submachine Guns"][i]] = { ...descriptions, ...extendedDescriptions[i] };
   }
   return obj;
 }

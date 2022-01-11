@@ -12,11 +12,12 @@ import Damascus from "./pages/Damascus";
 
 import { Route, Routes } from "react-router-dom";
 
-import descriptionList from "./data/Atomic/Guns/Descriptions/arDescriptions";
-import ars from "./data/Atomic/Guns/assaultRifles";
+import weapons from "./data/Atomic/Guns/weapons";
 
 function App() {
   var data = JSON.parse(localStorage.getItem("data"));
+
+  console.log(weapons);
 
   if (data === null) {
     data = starterData;

@@ -1,4 +1,4 @@
-const weapons = ["M1 Bazooka", "Panzerschreck", "Panzerfaust", "MK11 Launcher"];
+import gunList from "../gunList";
 
 const descriptions = {
   "Pack Tactics": "Get 100 Eliminations",
@@ -18,11 +18,11 @@ const mk11Descriptions = {
 
 function setDescriptions() {
   var obj = {};
-  for (let i = 0; i < weapons.length; i++) {
-    if (weapons[i] === "MK11Launcher") {
-      obj[weapons[i]] = mk11descriptions;
+  for (let i = 0; i < gunList["Launchers"].length; i++) {
+    if (gunList["Launchers"][i] === "MK11 Launcher") {
+      obj[gunList["Launchers"][i]] = mk11Descriptions;
     } else {
-      obj[weapons[i]] = descriptions;
+      obj[gunList["Launchers"][i]] = descriptions;
     }
   }
   return obj;
