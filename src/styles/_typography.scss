@@ -15,6 +15,7 @@ h6,
 .h6 {
   font-family: $font-type;
   font-weight: $font-weight-medium;
+  margin: 0;
 }
 
 body{
@@ -37,4 +38,11 @@ h2, .h2{
 h3, .h3{
     color: $pf-color;
     margin: 0 0 0 0;
+}
+
+h4,
+h5,
+h6,
+.h4{
+    margin: 0;
 }

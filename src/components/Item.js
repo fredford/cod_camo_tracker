@@ -2,8 +2,27 @@ import React from "react";
 import camoFiles from "../data/Atomic/camoFiles";
 
 export default function Item(props) {
-  console.log("here");
   console.log(props.item);
+
+  console.log(props.data[props.game][props.section][props.index]);
+  var data = props.data;
+
+  console.log(props.data);
+
+  var setGold = "weapon-progress card ";
+
+  if (props.item.gold) {
+    setGold += "weapon-completed";
+  }
+
+  const clickGold = () => {
+    data[props.game][props.section][props.index].gold =
+      !data[props.game][props.section][props.index].gold;
+
+    props.changeGold(props.index);
+    localStorage.setItem("data", JSON.stringify(data));
+  };
+
   const onChange = (e) => {
     console.log(e);
     var oldData = JSON.parse(localStorage.getItem("data"));
@@ -24,15 +43,20 @@ export default function Item(props) {
   return (
     <div className="">
       <div className="camo-name card">
-        <h3>{props.item.name}</h3>
+        <h6 className="fw-bold">{props.item.name}</h6>
+      </div>
+      <div className={setGold} onClick={() => clickGold()}>
+        <h6 className="fw-bold">Gold</h6>
       </div>
       <div className="camo-progress">
         {Object.keys(props.item.camos).map((key) => (
-          <img
-            src={camoFiles[key]}
-            alt={props.item.camos[key].description}
-            className="camo"
-          />
+          <div key={key}>
+            <img
+              src={camoFiles[key]}
+              alt={props.item.camos[key].description}
+              className="camo"
+            />
+          </div>
         ))}
       </div>
       {/*

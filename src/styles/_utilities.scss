@@ -12,6 +12,13 @@
 }
 
 
+.title-shadow{
+    box-shadow: $title-shadow;
+}
+
+.main-shadow{
+    box-shadow: $box-shadow;
+}
 
 .center-block{
     display: block;
@@ -31,7 +38,7 @@
 }
 
 .default-bg{
-    background-color: $pf-color;
+    background-color: $main-background-color;
 }
 
 .default-fg{

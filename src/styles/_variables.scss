@@ -1,17 +1,38 @@
 ////////////////////////////////////////////////////////////////
 //                        Color Palette                       //
 ////////////////////////////////////////////////////////////////
+
+// Background colors
+
+$main-background-color: #191c21;
+$card-background-color: #252932;
+
+// Foreground Colors
+
+$main-foreground-color: #195962;
+$alternate-foreground-color: #F56F6C;
+$text-color: #ffffff;
+
+// Muted Colors
+
+$muted-main-color: #19596255;
+
+
+
 // Primary Background Color
-$pb-color: #0b1521;
+//$pb-color: #0b1521;
+//$pb-color: #404756;
 // Secondary Background Color
-$sb-color: #131c26;
+//$sb-color: #131c26;
 // Third Background Color
 $tb-color: #112033;
 
 // Primary color
 $pf-color: #ebedef;
 // Secondary color
-$sf-color: #396EAD;
+$sf-color: #529efa;
+
+$tf-color: #396EAD;
 
 $ss-color: #396EAD55;
 
@@ -29,3 +50,10 @@ $default-font-size: 0.875rem;
 $font-weight-light: 300;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
+
+////////////////////////////////////////////////////////////////
+//                           Shadow                           //
+////////////////////////////////////////////////////////////////
+
+$box-shadow: 0 0.125rem .25rem rgba($tf-color, 0.5);
+$title-shadow: 0 0.125rem .25rem rgba($sf-color, 0.1)
