@@ -20,12 +20,44 @@
     margin-top: 5px;
 }
 
-.camo{
+.camo-image{
     height: auto;
     position: relative;
     width: 100%;
     z-index: 1;
     border-radius: 5px;
+}
+
+.camo-container{
+    position: relative;
+    
+}
+
+.check{
+    background-color: #00000055;
+    transform: rotate(360deg);
+}
+
+.checkrotate{
+    background-color: #00000055;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 2;
+    visibility: hidden;
+}
+
+.camo-image:hover + .checkrotate{
+    visibility: visible;
+    background-color: #00000055;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 2;
+}
+
+.camo-container:hover{
+
 }
 
 .item-container{
