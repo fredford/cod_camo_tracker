@@ -26,16 +26,14 @@ export default function Atomic() {
   };
 
   return (
-    <div>
+    <div className="">
       <TitleBar title="Atomic" progress={progress} />
 
-      <div className="container">
-        {Object.entries(data).map(([key, value]) => {
-          return (
-            <Section key={key} name={key} weapons={value} updateWeapon={updateWeapon} />
-          );
-        })}
-      </div>
+      {Object.entries(data).map(([key, value]) => {
+        return (
+          <Section key={key} name={key} weapons={value} updateWeapon={updateWeapon} />
+        );
+      })}
     </div>
   );
 }

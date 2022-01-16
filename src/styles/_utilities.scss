@@ -45,6 +45,10 @@
     background-color: $sf-color;
 }
 
+.full-width{
+    width: 100%;
+}
+
 .check {
     display: inline-block;
     transform: rotate(45deg);
@@ -53,3 +57,6 @@
     border-bottom: var(--borderWidth) solid var(--borderColor);
     border-right: var(--borderWidth) solid var(--borderColor);
   }
+
+
+  

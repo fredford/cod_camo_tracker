@@ -17,3 +17,9 @@
 .item-card{
     width: 275px;
 }
+
+@mixin standard-card{
+    background-color: $card-background-color;
+    margin: 1rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+}

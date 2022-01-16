@@ -11,7 +11,7 @@ $card-background-color: #252932;
 
 $main-foreground-color: #195962;
 $alternate-foreground-color: #F56F6C;
-$text-color: #ffffff;
+$text-color: #ebedef;
 
 // Muted Colors
 
@@ -51,9 +51,17 @@ $font-weight-light: 300;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
 
-////////////////////////////////////////////////////////////////
-//                           Shadow                           //
-////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////
+//                    Shadow                   //
+/////////////////////////////////////////////////
 
 $box-shadow: 0 0.125rem .25rem rgba($tf-color, 0.5);
-$title-shadow: 0 0.125rem .25rem rgba($sf-color, 0.1)
+$title-shadow: 0 0.125rem .25rem rgba($sf-color, 0.1);
+
+/////////////////////////////////////////////////
+//                    Border                   //
+/////////////////////////////////////////////////
+
+$sm-border-radius: 5px;
+$md-border-radius: 5px;
+$lg-border-radius: 1rem;

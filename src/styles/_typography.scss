@@ -19,24 +19,24 @@ h6,
 }
 
 body{
-    color: $pf-color;
+    color: $text-color;
 }
 
 h1, .h1 {
     font-weight: $font-weight-bold;
-    color: $pf-color;
+    color: $text-color;
     margin: 0 0 0 0;
     padding: 1rem 1rem 1rem 1rem;
 }
 
 h2, .h2{
     font-weight: $font-weight-bold;
-    color: $sf-color;
+    color: $text-color;
     padding: 1rem 1rem 1rem 1rem;
 }
 
 h3, .h3{
-    color: $pf-color;
+    color: $text-color;
     margin: 0 0 0 0;
 }
 

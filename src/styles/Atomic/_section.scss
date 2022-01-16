@@ -1,80 +1,72 @@
-.class-section{
+
+
+.container-section-header{
+    .section-header{
+        
+    }
+}
+
+.container-weapons{
     display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(5, 1fr);
     width: 100%;
+
+    .weapon-section{
+        position: relative;
+        //border: 3px solid rgba($main-foreground-color, 0.5);
+        border-radius: $lg-border-radius;
+        @include standard-card;
+    }
+    .weapon-section:hover{
+        @include main-shadow;
+    }
 }
 
-.weapon-section{
-    position: relative;
-    width: 200px;
-    border: 3px solid rgba($main-foreground-color, 0.5);
-    border-radius: 1rem;
+@media screen and ( min-width: 1350px){
+    .container-weapons{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media screen and (max-width: 1350px){
+    .container-weapons{
+        grid-template-columns: repeat(4, 1fr);
+    }        
+}
+@media screen and (max-width: 970px){
+    .container-weapons{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 700px){
+    .container-weapons{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 500px){
+    .container-weapons{
+        grid-template-columns: repeat(1, 1fr)
+    }
 }
 
-.camo-progress{
-    display: grid;
-    gap: 5px;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, auto);
-    margin-top: 5px;
-}
 
-.camo-image{
-    height: auto;
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    border-radius: 5px;
-}
 
-.camo-container{
-    position: relative;
-    
-}
-
-.check{
-    background-color: #00000055;
-    transform: rotate(360deg);
-}
-
-.checkrotate{
-    background-color: #00000055;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    z-index: 2;
-    visibility: hidden;
-}
-
-.camo-image:hover + .checkrotate{
-    visibility: visible;
-    background-color: #00000055;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    z-index: 2;
-}
-
-.camo-container:hover{
-
-}
-
-.item-container{
-    display: flex;
-}
-
-.camo-name{
-    display: grid;
-    place-items: center;
+.container-weapon-header{
     background-color: $muted-main-color;
     padding: 1rem;
     text-transform: uppercase;
+    border-radius: $sm-border-radius;
+    font-weight: bold;
+
+    .weapon-header{
+        font-weight: bold;
+    }    
 }
 
-.camo-name:hover{
+.container-weapon-header:hover{
     background-color: $main-foreground-color;
 }
+
+
+
 
 .weapon-progress{
     display: grid;
@@ -83,6 +75,11 @@
     background-color: #feba2455;
     margin-top: 0.25rem;
     text-transform: uppercase;
+    border-radius: $sm-border-radius;
+
+    .gold-header{
+        font-weight: bold;
+    }
 }
 
 .weapon-progress:hover{
@@ -91,8 +88,86 @@
     text-transform: uppercase;
 }
 
+
 .weapon-completed{
     background-color: #feba24;
     color: #000000;
     text-transform: uppercase;
 }
+
+
+
+.checkrotate{   
+    color: green;
+    position: absolute;
+    z-index: 2;
+    visibility: hidden;
+    border: 1px solid $text-color;
+    border-radius: $sm-border-radius;
+    background-color: $text-color;
+}
+
+
+
+.container-camos{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);
+    margin-top: 5px;
+}
+
+.container-camo{
+    position: relative;
+    border-radius: $md-border-radius;
+    border: 2px solid $main-foreground-color;
+
+    .camo-image{
+        height: auto;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+
+    }
+
+    .camo-image:hover + .checkrotate{
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform: translate( -50%, -50%);
+        z-index: 4;
+        pointer-events: none;
+        visibility:visible;
+
+    }
+
+    
+}
+
+.container-camo:hover{
+    @include small-shadow;
+}
+
+
+
+
+
+.check{
+    transform: rotate(360deg);
+}
+
+
+
+/* .camo-image:hover + .checkrotate{
+    pointer-events: none;
+    visibility: visible;
+    background-color: #00000055;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 2;
+} */
+
+
+
+
