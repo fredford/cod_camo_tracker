@@ -1,6 +1,7 @@
 import gunList from "../gunList";
 import camoRequirements from "../camoRequirements";
 import descriptions from "../Descriptions/arDescriptions";
+import camoNames from "../camoNames";
 
 const original = [
   "STG44",
@@ -30,6 +31,7 @@ function createData() {
     };
     for (const [key, value] of Object.entries(camoRequirements[type])) {
       gun["camos"][key] = {
+        name: camoNames[key],
         description: descriptions[gunList[type][i]][key],
         completion: false,
         total: value,
