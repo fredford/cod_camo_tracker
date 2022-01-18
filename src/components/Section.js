@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function Section(props) {
-  const [isOpen, setIsOpen] = useState(false);
+import ReactTooltip from "react-tooltip";
+
+function Section(props) {
   var section = props.name;
   var weapons = props.weapons;
 
@@ -30,17 +31,9 @@ export default function Section(props) {
     props.updateWeapon(section, index, "camo", key);
   };
 
-  function clickName(index) {
+  function clickEdit(index) {
     console.log("here");
   }
-
-  const showModal = () => {
-    setIsOpen(true);
-  };
-
-  const hideModal = () => {
-    setIsOpen(false);
-  };
 
   return (
     <div key={section}>
@@ -56,35 +49,48 @@ export default function Section(props) {
       <div className="container-weapons">
         {weapons.map((item, index) => {
           return (
-            <div className="card weapon-section text-center" key={index}>
+            <div className="card weapon-section" key={index}>
               {/*
               Weapon header
               */}
-              <div className="container-weapon-header" onClick={() => clickName(index)}>
-                <h6 className="weapon-header">{item.name}</h6>
+              <div className="container-weapon-header">
+                <h5 className="weapon-header">{item.name}</h5>
               </div>
 
               {/*
               Gold button
               */}
-              <div className={setGoldColor(index)} onClick={() => clickGold(index)}>
-                <h6 className="gold-header">Gold</h6>
+              <div className="row">
+                <div className="col quarter-padding-right">
+                  <div className={setGoldColor(index)} onClick={() => clickGold(index)}>
+                    <h6 className="gold-header">Gold</h6>
+                  </div>
+                </div>
+                <div className="col quarter-padding-left">
+                  <button className="edit-button" onClick={() => clickEdit(index)}>
+                    <h6 className="edit-header">Expand</h6>
+                  </button>
+                </div>
               </div>
               {/*
               Grouping of camo buttons
               */}
               <div className="container-camos">
                 {Object.keys(item.camos).map((key) => (
-                  <div
-                    className="container-camo"
-                    key={key}
-                    onClick={() => clickCamo(key, index)}
-                  >
-                    <div
-                      className={setCamoCompleted(index, key)}
-                      id={item.camos[key].name}
-                    ></div>
-                  </div>
+                  <React.Fragment key={key}>
+                    <button
+                      className="container-camo"
+                      key={key}
+                      onClick={() => clickCamo(key, index)}
+                      data-tip={item.camos[key].description}
+                    >
+                      <div
+                        className={setCamoCompleted(index, key)}
+                        id={item.camos[key].name}
+                      ></div>
+                    </button>
+                    <ReactTooltip />
+                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -94,3 +100,5 @@ export default function Section(props) {
     </div>
   );
 }
+
+export default Section;

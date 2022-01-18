@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Item from "../components/Item";
 import Section from "../components/Section";
 import TitleBar from "../components/TitleBar";
+
+import ReactTooltip from "react-tooltip";
 
 export default function Atomic() {
   var savedData = JSON.parse(localStorage.getItem("atomic"));
@@ -41,6 +42,7 @@ export default function Atomic() {
 
   return (
     <div className="">
+      <ReactTooltip id="foo" />
       <TitleBar title="Atomic" progress={progress} />
 
       {Object.entries(data).map(([key, value]) => {
@@ -58,7 +60,7 @@ const tempData = {
       type: "Assault Rifles",
       name: "STG44",
       required: true,
-      gold: true,
+      gold: false,
       diamond: false,
       atomic: false,
       levelMax: 70,

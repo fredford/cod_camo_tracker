@@ -4,14 +4,24 @@
 
 // Background colors
 
-$main-background-color: #191c21;
-$card-background-color: #252932;
+
+
+//$main-background-color: #191c21;
+$main-background-color: #20232a;
+//$card-background-color: #252932;
+$card-background-color: #32323e;
 
 // Foreground Colors
 
 $main-foreground-color: #195962;
 $alternate-foreground-color: #F56F6C;
-$text-color: #ebedef;
+//$text-color: #ebedef;
+$text-color: #e6e5e8;
+$accent-color: #949db2;
+$gold-color: #feba24;
+
+
+$border-accent: #949db2dd;
 
 // Muted Colors
 
@@ -41,7 +51,8 @@ $ss-color: #396EAD55;
 ////////////////////////////////////////////////////////////////
 
 // Font Type
-$font-type: "Rubik", sans-serif;
+//$font-type: "Nunito", sans-serif;
+$font-type: 'Montserrat', sans-serif;
 
 // Font Size
 $default-font-size: 0.875rem;
@@ -65,3 +76,4 @@ $title-shadow: 0 0.125rem .25rem rgba($sf-color, 0.1);
 $sm-border-radius: 5px;
 $md-border-radius: 5px;
 $lg-border-radius: 1rem;
+

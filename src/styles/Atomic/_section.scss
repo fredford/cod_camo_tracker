@@ -10,14 +10,15 @@
     display: grid;
     width: 100%;
 
+    .col-6{
+        padding: 0;
+    }
+
     .weapon-section{
         position: relative;
         //border: 3px solid rgba($main-foreground-color, 0.5);
         border-radius: $lg-border-radius;
         @include standard-card;
-    }
-    .weapon-section:hover{
-        @include main-shadow;
     }
 }
 
@@ -50,6 +51,21 @@
 
 
 .container-weapon-header{
+    display: flex;
+    justify-content: center;
+
+    padding: 0rem 0 1rem 0;
+
+    .weapon-header{
+        font-weight: bolder !important;
+    }
+
+}
+
+
+
+
+/* .container-weapon-header{
     background-color: $muted-main-color;
     padding: 1rem;
     text-transform: uppercase;
@@ -63,49 +79,56 @@
 
 .container-weapon-header:hover{
     background-color: $main-foreground-color;
+} */
+
+.edit-button{
+    display: grid;
+    place-items: center;
+    padding: 0.5rem;
+    border: 1px solid $border-accent;
+    text-transform: uppercase;
+    border-radius: $sm-border-radius;
+    color: $accent-color;
+    margin-top: 0.25rem;
+    background-color: $card-background-color;
+    width: 100%;
 }
 
-
-
+.edit-button:hover{
+    background-color: $accent-color;
+    color: #000;
+    text-transform: uppercase;
+}
 
 .weapon-progress{
     display: grid;
     place-items: center;
     padding: 0.5rem;
-    background-color: #feba2455;
+    //background-color: #feba2455;
+    border: 1px solid $gold-color;
     margin-top: 0.25rem;
     text-transform: uppercase;
     border-radius: $sm-border-radius;
+    color: $gold-color;
 
     .gold-header{
-        font-weight: bold;
+        font-weight: 900;
     }
 }
 
 .weapon-progress:hover{
-    background-color:#feba24;
+    background-color:$gold-color;
     color: #000;
     text-transform: uppercase;
 }
 
 
 .weapon-completed{
-    background-color: #feba24;
+    background-color: $gold-color;
     color: #000000;
     text-transform: uppercase;
 }
 
-
-
-.checkrotate{   
-    color: green;
-    position: absolute;
-    z-index: 2;
-    visibility: hidden;
-    border: 1px solid $text-color;
-    border-radius: $sm-border-radius;
-    background-color: $text-color;
-}
 
 
 
@@ -119,14 +142,22 @@
 
 .container-camo{
     aspect-ratio: auto 1 / 1;
+    border-radius: $md-border-radius;
+    border: 1px solid $border-accent;
+    padding: 0;
+
+    .camo-button{
+        width: 100
+    }
 
     .camo-image{
         border-radius: $md-border-radius;
+        border: 1px solid $border-accent;
 
         display: flex;
         justify-content:center;
         align-items:center;
-        box-shadow: rgba(0,0,0, .5) 0 0 0 30px inset;
+        box-shadow: rgba(0,0,0, .5) 0 0 0 40px inset;
         transition: box-shadow .25s;
         float: left;
 
