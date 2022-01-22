@@ -1,7 +1,4 @@
-@mixin main-shadow{
-    box-shadow: rgba($alternate-foreground-color, 0.16) 0px 3px 6px, rgba($alternate-foreground-color, 0.23) 0px 3px 6px;
-  }
-
-@mixin small-shadow{
-    box-shadow: rgba($alternate-foreground-color, 0.16) 0px 2px 4px, rgba($alternate-foreground-color, 0.23) 0px 2px 4px;
+@mixin background-tint {
+  background-color: rgba(256, 256, 256, 1); /* Tint color */
+  background-blend-mode: multiply;
 }

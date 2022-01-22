@@ -1,0 +1,48 @@
+.container-weapons {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+
+  .weapon {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    position: relative;
+    border-radius: 10px;
+  }
+
+  .weapon-header {
+    font-weight: bold;
+  }
+}
+@media screen and (min-width: 1350px) {
+  .container-weapons {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media screen and (max-width: 1350px) {
+  .container-weapons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 970px) {
+  .container-weapons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 700px) {
+  .container-weapons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  .container-weapons {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.camos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, auto);
+  margin-top: 5px;
+  gap: 10px;
+}

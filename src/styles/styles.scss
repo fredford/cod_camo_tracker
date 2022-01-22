@@ -1,17 +1,12 @@
-// Import variables
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
-@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+@import "./typography";
 @import "./mixins";
 
-@import "./utilities";
-@import "./typography";
-@import "./card";
-
-@import "./titlebar";
-@import "./navbar";
-
-// Atomic
-@import "./Atomic/section";
-@import "./Atomic/item";
-
 @import "./app";
+
+@import "./section";
+@import "./camo";
+@import "./camocollapse";
