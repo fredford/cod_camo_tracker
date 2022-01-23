@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import PageHeader from "../components/layout/headers/PageHeader";
 import Weapon from "../components/Weapon";
 
 import { GameProvider, GameContext } from "../contexts/GameContext";
@@ -16,7 +17,7 @@ export default function DMUltra() {
 
   return (
     <div>
-      <h1>{gameValue}</h1>
+      <PageHeader type={typeValue} gameValue={gameValue} />
       <Weapon name="M4A1" />
     </div>
   );

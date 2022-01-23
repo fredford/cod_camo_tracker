@@ -3,12 +3,15 @@ import React from "react";
 export default function Camo(props) {
   var target = "#" + props.id;
 
+  var camoPath = "/atomic/" + props.camo.image + ".png";
+
   const onToggle = () => {
     props.onToggle({
       name: props.camo.name,
+      image: props.camo.image,
       description: props.camo.description,
       current: props.camo.current,
-      required: props.camo.required,
+      required: props.camo.total,
     });
   };
 
@@ -23,7 +26,7 @@ export default function Camo(props) {
         onClick={onToggle}
         className="camo-button"
       >
-        <img className="camo-image" src={require("../assets/camo.png")} alt="camo" />
+        <img className="camo-image" src={camoPath} alt="camo" />
       </button>
     </div>
   );

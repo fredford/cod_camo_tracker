@@ -1,11 +1,12 @@
 .camo {
   aspect-ratio: auto 1/1;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
-  border-radius: 10px;
+  border-radius: $border-radius;
+  border: 2px solid rgba($foreground-color-light, 0.5);
 }
 
 .camo-image {
-  border-radius: 10px;
+  border-radius: $border-radius-inner;
   width: 100%;
   height: auto;
 }

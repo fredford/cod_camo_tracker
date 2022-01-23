@@ -1,26 +1,34 @@
 .camo-collapse {
   margin: 0.5rem;
   height: calc(100% - 1rem);
-  border-radius: 10px;
+  border-radius: $border-radius;
+  padding: 0.5rem;
+  background-color: $background-color-selected;
 }
 
 .camo-title-container {
   position: relative;
   margin: 0;
+
+  .camo-title {
+    font-weight: bold;
+    color: $foreground-color-light;
+  }
 }
 
 .camo-collapse-image-container {
   width: 100%;
+  border: 2px solid rgba($foreground-color-light, 0.5);
+  border-radius: $border-radius;
 }
 
 .camo-collapse-image {
-  border-radius: 10px;
+  border-radius: $border-radius-inner;
   width: 100%;
 }
 
-.camo-title {
-}
 .camo-description {
+  color: $foreground-color-text;
 }
 
 .camo-data {

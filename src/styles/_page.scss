@@ -1,0 +1,24 @@
+// Page CSS
+
+.page-header-container {
+  padding: 1.5rem 0 0 1rem;
+}
+
+.page-header-title {
+  font-weight: bold;
+  background: $gradient-text;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0;
+}
+
+.page-header-subtitle {
+  opacity: 0.6;
+  font-weight: bold;
+  background: $gradient-text;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}

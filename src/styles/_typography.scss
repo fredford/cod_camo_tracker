@@ -8,7 +8,7 @@ body,
 .h3,
 .p,
 .body {
-  font-family: "Montserrat", sans-serif;
+  font-family: $font-family;
 }
 
 h2,
@@ -18,4 +18,9 @@ h2,
 h3,
 .h3 {
   font-size: 1.05rem;
+}
+
+p,
+.p {
+  font-size: 0.85rem;
 }
