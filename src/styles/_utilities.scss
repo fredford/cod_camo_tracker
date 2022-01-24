@@ -4,21 +4,22 @@ hr {
   border-top: 1px solid rgba($foreground-color-light, 0.5);
 }
 
-.completed {
-  background: radial-gradient(
-      ellipse farthest-corner at right bottom,
-      #fedb37 0%,
-      #fdb931 8%,
-      #9f7928 30%,
-      #8a6e2f 40%,
-      transparent 80%
-    ),
-    radial-gradient(
-      ellipse farthest-corner at left top,
-      #d1b464 0%,
-      #5d4a1f 50%,
-      #5d4a1f 100%
-    );
+.gold {
+  background: linear-gradient(to bottom, #c39738, #deb761, #c39738);
+
+  .weapon-header {
+    color: $background-color-0 !important;
+    font-weight: bold;
+  }
+}
+
+.diamond {
+  background: linear-gradient(to bottom, #d5d7e5, #eee, #d5d7e5);
+
+  .weapon-header {
+    color: $background-color-0 !important;
+    font-weight: bold;
+  }
 }
 
 .dark-color {

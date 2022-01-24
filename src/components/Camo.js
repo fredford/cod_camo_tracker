@@ -12,6 +12,7 @@ export default function Camo(props) {
       description: props.camo.description,
       current: props.camo.current,
       required: props.camo.total,
+      index: props.index,
     });
   };
 

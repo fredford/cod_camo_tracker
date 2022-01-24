@@ -2,8 +2,8 @@
   margin: 0.5rem;
   height: calc(100% - 1rem);
   border-radius: $border-radius;
-  padding: 0.5rem;
-  background-color: $background-color-selected;
+  padding: 1rem;
+  background-color: $background-color-2;
 }
 
 .camo-title-container {
@@ -13,6 +13,11 @@
   .camo-title {
     font-weight: bold;
     color: $foreground-color-light;
+    margin-bottom: 0;
+  }
+  .camo-subtitle {
+    color: $foreground-color-text;
+    opacity: 0.9;
   }
 }
 
@@ -31,5 +36,9 @@
   color: $foreground-color-text;
 }
 
-.camo-data {
+.camo-input {
+  margin-top: 0.5rem;
+  background-color: $background-color-3;
+  border-color: rgba($foreground-color-light, 0.5);
+  color: $foreground-color-text;
 }

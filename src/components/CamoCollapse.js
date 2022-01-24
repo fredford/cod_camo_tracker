@@ -9,6 +9,7 @@ export default function CamoCollapse({
   current,
   required,
   image,
+  changeCamo,
 }) {
   var progressValue = (current / required) * 100;
 
@@ -23,11 +24,20 @@ export default function CamoCollapse({
     variantType = "success";
   }
 
+  const inputChange = (e) => {
+    if (isNaN(parseInt(e.target.value))) {
+      changeCamo(0);
+    } else {
+      changeCamo(parseInt(e.target.value));
+    }
+  };
+
   return (
     <div className="collapse" id={id}>
       <div className="card card-shadow camo-collapse">
         <div className="camo-title-container">
           <h3 className="camo-title">{name}</h3>
+          <h4 className="camo-subtitle">{description}</h4>
         </div>
         <div className="row">
           <div className="col-4">
@@ -42,12 +52,14 @@ export default function CamoCollapse({
               label={`${progressValue}%`}
               variant={variantType}
             />
-            <p className="camo-description">
-              {description}
-              <br />
-              {current}/{required}
-            </p>
-            <p className="camo-data"></p>
+            <div className="form-group">
+              <input
+                id="formControlCamo"
+                value={current}
+                className="form-control form-control-sm camo-input"
+                onChange={inputChange}
+              ></input>
+            </div>
           </div>
         </div>
       </div>

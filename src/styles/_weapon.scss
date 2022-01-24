@@ -8,7 +8,9 @@
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     position: relative;
     border-radius: $border-radius;
-    background-color: $background-color-light;
+    background-color: $background-color-1;
+    padding: 1rem;
+    margin: 0.5rem;
   }
 
   .weapon-header-container {
