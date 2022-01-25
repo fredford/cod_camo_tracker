@@ -2,3 +2,16 @@
   background-color: rgba(256, 256, 256, 1); /* Tint color */
   background-blend-mode: multiply;
 }
+
+@mixin card-common {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: $background-color-1;
+  border-radius: $border-radius;
+  padding: 1rem;
+  margin: 0.5rem;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}

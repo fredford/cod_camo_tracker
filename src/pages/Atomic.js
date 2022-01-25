@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import Section from "../components/layout/Section";
 
 import PageHeader from "../components/layout/headers/PageHeader";
+import PageController from "../components/layout/controllers/PageController";
 
 import { GameContext } from "../contexts/GameContext";
 
@@ -19,7 +20,11 @@ export default function Atomic() {
   var showData = {};
 
   if (Object.keys(dataValue).length === 0) {
+    // TODO this is returning null when nothing is locally stored
+
     var savedData = JSON.parse(localStorage.getItem("Atomic"));
+
+    console.log(savedData);
 
     if (Object.keys(savedData).length === 0) {
       showData = tempData;
@@ -30,6 +35,21 @@ export default function Atomic() {
     showData = JSON.parse(localStorage.getItem("Atomic"));
   }
 
+  let total = 0;
+  let count = 0;
+
+  for (const sectionName in showData) {
+    showData[sectionName].forEach(function (weapon) {
+      total += weapon.camos.length;
+
+      if (weapon.gold) {
+        count += weapon.camos.length;
+      } else {
+        count += weapon.camos.filter((camo) => camo.completion === true).length;
+      }
+    });
+  }
+
   React.useEffect(() => {
     setGameValue("Call of Duty: Vanguard");
     setTypeValue("Atomic");
@@ -38,6 +58,7 @@ export default function Atomic() {
   return (
     <div className="atomic">
       <PageHeader />
+      <PageController total={total} count={count} />
       {Object.entries(showData).map(([key, value]) => {
         return <Section key={key} name={key} weaponsList={value} />;
       })}

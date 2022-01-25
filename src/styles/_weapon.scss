@@ -68,6 +68,10 @@
   color: $foreground-color-text;
 }
 
+.gold-button:hover {
+  background-color: rgba(#feba24, 0.5);
+}
+
 .gold.gold-button {
   color: $background-color-0 !important;
 }

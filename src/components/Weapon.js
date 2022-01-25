@@ -82,10 +82,8 @@ export default function Weapon({ weapon, index }) {
   };
 
   const onToggleCamo = () => {
-    console.log("here");
     var newData = JSON.parse(localStorage.getItem(typeValue));
 
-    console.log(camo.completion);
     if (camo.completion) {
       newData[weapon.type][index].camos[camoIndex].completion = false;
       newData[weapon.type][index].camos[camoIndex].current = 0;
@@ -101,8 +99,6 @@ export default function Weapon({ weapon, index }) {
       "completion",
       true
     );
-
-    console.log(goldCheck);
 
     if (goldCheck) {
       newData[weapon.type][index].gold = true;

@@ -25,3 +25,42 @@
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
 }
+
+.page-controller-container {
+  padding: 1rem;
+}
+
+.page-controller__progressbar {
+  margin-bottom: 2rem;
+
+  .progress {
+    height: 2rem;
+    background-color: $background-color-2;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    background-color: $foreground-color-light;
+    color: $background-color-2;
+  }
+}
+
+.page-controller h2 {
+  color: $foreground-color-light;
+}
+
+.page-controller #bar {
+  width: 50px;
+  height: 4px;
+  background: $gradient-text;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.5rem;
+}
+
+.page-controller button {
+}
+
+.page-controller #dropdown {
+  background-color: $background-color-0;
+}

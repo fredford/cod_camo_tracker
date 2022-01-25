@@ -1,8 +1,16 @@
-.section-header-container {
+.section-header {
   padding: 2rem 0 0 1rem;
 }
 
-.section-header {
-  color: $foreground-color-dark;
+.section-header h2 {
+  color: $foreground-color-light;
   font-weight: 600;
+}
+
+.section-header div {
+  width: 100px;
+  height: 4px;
+  background: $gradient-text;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.5rem;
 }
