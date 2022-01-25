@@ -24,28 +24,31 @@ export default function Weapon(props) {
   }
 
   const camoProgressUpdate = (e) => {
+    var newData = JSON.parse(localStorage.getItem("atomic"));
+
     setCurrent(e);
 
-    dataValue[props.weapon.type][props.index].camos[index].current = e;
+    newData[props.weapon.type][props.index].camos[index].current = e;
 
     if (e === required) {
-      dataValue[props.weapon.type][props.index].camos[index].completion = true;
+      newData[props.weapon.type][props.index].camos[index].completion = true;
 
-      var diamondCheck = dataValue[props.weapon.type].every(function (weapon) {
+      var diamondCheck = newData[props.weapon.type].every(function (weapon) {
         return weapon.gold === true;
       });
 
       if (diamondCheck) {
-        dataValue[props.weapon.type].forEach(function (weapon, index) {
+        newData[props.weapon.type].forEach(function (weapon, index) {
           weapon.diamond = true;
-          dataValue[props.weapon.type][index].diamond = true;
-          localStorage.setItem("atomic", JSON.stringify(dataValue));
+          newData[props.weapon.type][index].diamond = true;
+
+          localStorage.setItem("atomic", JSON.stringify(newData));
         });
       } else {
-        dataValue[props.weapon.type].forEach(function (weapon, index) {
+        newData[props.weapon.type].forEach(function (weapon, index) {
           weapon.diamond = false;
-          dataValue[props.weapon.type][index].diamond = false;
-          localStorage.setItem("atomic", JSON.stringify(dataValue));
+          newData[props.weapon.type][index].diamond = false;
+          localStorage.setItem("atomic", JSON.stringify(newData));
         });
       }
 
@@ -54,14 +57,14 @@ export default function Weapon(props) {
       });
 
       if (goldCheck) {
-        dataValue[props.weapon.type][props.index].gold = true;
+        newData[props.weapon.type][props.index].gold = true;
       }
     } else {
-      dataValue[props.weapon.type][props.index].camos[index].completion = false;
-      dataValue[props.weapon.type][props.index].gold = false;
+      newData[props.weapon.type][props.index].camos[index].completion = false;
+      newData[props.weapon.type][props.index].gold = false;
     }
 
-    localStorage.setItem("atomic", JSON.stringify(dataValue));
+    localStorage.setItem("atomic", JSON.stringify(newData));
   };
 
   const onToggle = (data) => {

@@ -5,7 +5,9 @@
 }
 
 .page-header-title {
-  font-weight: bold;
+  font-size: 20vw;
+  text-transform: uppercase;
+  font-weight: bolder;
   background: $gradient-text;
   background-clip: text;
   -webkit-background-clip: text;
@@ -14,6 +16,7 @@
 }
 
 .page-header-subtitle {
+  font-size: 4vw;
   opacity: 0.6;
   font-weight: bold;
   background: $gradient-text;
