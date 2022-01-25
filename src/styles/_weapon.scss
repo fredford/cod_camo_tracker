@@ -54,3 +54,20 @@
   margin-top: 5px;
   gap: 10px;
 }
+
+.gold-button-container {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.gold-button {
+  border: 1px solid #feba24;
+  width: 100%;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: $foreground-color-text;
+}
+
+.gold.gold-button {
+  color: $background-color-0 !important;
+}

@@ -42,3 +42,25 @@
   border-color: rgba($foreground-color-light, 0.5);
   color: $foreground-color-text;
 }
+
+.done-button-container {
+  margin-top: 0.5rem;
+  align-self: stretch;
+}
+
+.done-button {
+  //padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+  font-size: 0.75rem;
+  border-color: $foreground-color-light;
+  color: $foreground-color-light;
+  width: 100%;
+}
+
+.done {
+  background-color: $foreground-color-light;
+  color: $background-color-0;
+}
+
+.done-button:hover {
+  background-color: rgba($foreground-color-light, 0.5);
+}

@@ -7,70 +7,28 @@ import PageHeader from "../components/layout/headers/PageHeader";
 import { GameContext } from "../contexts/GameContext";
 
 export default function Atomic() {
+  const [gameData, setGameData] = useState({});
   const { game, type, data } = useContext(GameContext);
 
   const [gameValue, setGameValue] = game;
   const [typeValue, setTypeValue] = type;
   const [dataValue, setDataValue] = data;
 
-  // Get local storage data if it exists
-  var savedData = JSON.parse(localStorage.getItem("atomic"));
+  var atomicBackground = "atomic";
 
-  // Store a copy of the starter data on local storage
-  localStorage.setItem("localAtomic", JSON.stringify(tempData));
+  var showData = {};
 
-  // Set the initial state using local storage data or new data
-  const [gameData, setGameData] = useState(
-    savedData === null ? JSON.parse(localStorage.getItem("localAtomic")) : savedData
-  );
+  if (Object.keys(dataValue).length === 0) {
+    var savedData = JSON.parse(localStorage.getItem("Atomic"));
 
-  // Set the game data into local storage
-  localStorage.setItem("atomic", JSON.stringify(gameData));
-
-  /*
-  if (Object.keys(gameData).length != 0) {
-    var newData = JSON.parse(localStorage.getItem("atomic"));
-
-    for (const section in gameData) {
-      gameData[section].forEach(function (weapon, weaponIndex) {
-        // Check each camo to see if the requirement is met
-        weapon.camos.forEach(function (camo, camoIndex) {
-          if (camo.current >= camo.total && !camo.completion) {
-            newData[section][weaponIndex].camos[camoIndex].completion = true;
-          }
-        });
-
-        // Check to see if all camos satisfy gold requirements
-        var goldCheck = weapon.camos.every(function (camo) {
-          return camo.completion === true;
-        });
-
-        if (goldCheck && !weapon.gold) {
-          newData[section][weaponIndex].gold = true;
-        } else if (!goldCheck && weapon.gold) {
-          newData[section][weaponIndex].gold = false;
-        }
-      });
-
-      var diamondCheck = gameData[section].every(function (weapon) {
-        return weapon.gold === true;
-      });
-
-      if (diamondCheck) {
-        newData[section].forEach(function (weapon) {
-          weapon.diamond = true;
-        });
-      } else if (!diamondCheck) {
-        newData[section].forEach(function (weapon) {
-          weapon.diamond = false;
-        });
-      }
+    if (Object.keys(savedData).length === 0) {
+      showData = tempData;
+    } else {
+      showData = savedData;
     }
-
-    setGameData(newData);
-    localStorage.setItem("atomic", JSON.stringify(newData));
+  } else {
+    showData = JSON.parse(localStorage.getItem("Atomic"));
   }
-  */
 
   React.useEffect(() => {
     setGameValue("Call of Duty: Vanguard");
@@ -78,10 +36,9 @@ export default function Atomic() {
   });
 
   return (
-    <div>
+    <div className="atomic">
       <PageHeader />
-      {Object.entries(gameData).map(([key, value]) => {
-        console.log(key, value);
+      {Object.entries(showData).map(([key, value]) => {
         return <Section key={key} name={key} weaponsList={value} />;
       })}
     </div>
@@ -112,7 +69,7 @@ const tempData = {
           name: "Surgical",
           image: "surgical",
           description: "Get 100 Headshots",
-          completion: false,
+          completion: true,
           total: 100,
           current: 100,
         },

@@ -3,108 +3,190 @@ import Camo from "./Camo";
 import CamoCollapse from "./CamoCollapse";
 
 import { GameContext } from "../contexts/GameContext";
+import WeaponHeader from "./layout/headers/WeaponHeader";
 
-export default function Weapon(props) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [current, setCurrent] = useState("");
-  const [required, setRequired] = useState("");
-  const [image, setImage] = useState("");
-  const [index, setIndex] = useState("");
+import { checkEveryStatus } from "../utilities";
+
+export default function Weapon({ weapon, index }) {
+  const [camo, setCamo] = useState({});
+  const [camoIndex, setCamoIndex] = useState(0);
 
   const { game, type, data } = useContext(GameContext);
+  const [typeValue, setTypeValue] = type;
   const [dataValue, setDataValue] = data;
 
   var backgroundContainer = "card weapon ";
 
-  if (props.weapon.diamond) {
+  var buttonBackground = "btn gold-button ";
+
+  if (weapon.diamond) {
     backgroundContainer += "diamond";
-  } else if (props.weapon.gold) {
+    buttonBackground += "gold";
+  } else if (weapon.gold) {
     backgroundContainer += "gold";
+    buttonBackground += "gold";
   }
 
   const camoProgressUpdate = (e) => {
-    var newData = JSON.parse(localStorage.getItem("atomic"));
+    var newData = JSON.parse(localStorage.getItem(typeValue));
 
-    setCurrent(e);
+    newData[weapon.type][index].camos[camoIndex].current = e;
 
-    newData[props.weapon.type][props.index].camos[index].current = e;
+    var current = newData[weapon.type][index].camos[camoIndex].current;
+    var total = newData[weapon.type][index].camos[camoIndex].total;
 
-    if (e === required) {
-      newData[props.weapon.type][props.index].camos[index].completion = true;
-
-      var diamondCheck = newData[props.weapon.type].every(function (weapon) {
-        return weapon.gold === true;
-      });
-
-      if (diamondCheck) {
-        newData[props.weapon.type].forEach(function (weapon, index) {
-          weapon.diamond = true;
-          newData[props.weapon.type][index].diamond = true;
-
-          localStorage.setItem("atomic", JSON.stringify(newData));
-        });
-      } else {
-        newData[props.weapon.type].forEach(function (weapon, index) {
-          weapon.diamond = false;
-          newData[props.weapon.type][index].diamond = false;
-          localStorage.setItem("atomic", JSON.stringify(newData));
-        });
-      }
-
-      var goldCheck = props.weapon.camos.every(function (v) {
-        return v.completion === true;
-      });
-
-      if (goldCheck) {
-        newData[props.weapon.type][props.index].gold = true;
-      }
+    if (current >= total) {
+      newData[weapon.type][index].camos[camoIndex].completion = true;
     } else {
-      newData[props.weapon.type][props.index].camos[index].completion = false;
-      newData[props.weapon.type][props.index].gold = false;
+      newData[weapon.type][index].camos[camoIndex].completion = false;
     }
 
-    localStorage.setItem("atomic", JSON.stringify(newData));
+    var goldCheck = checkEveryStatus(
+      newData[weapon.type][index].camos,
+      "completion",
+      true
+    );
+
+    if (goldCheck) {
+      newData[weapon.type][index].gold = true;
+    } else {
+      newData[weapon.type][index].gold = false;
+    }
+
+    var diamondCheck = checkEveryStatus(newData[weapon.type], "gold", true);
+
+    if (diamondCheck) {
+      newData[weapon.type].forEach(function (weapon) {
+        weapon.diamond = true;
+      });
+    } else {
+      newData[weapon.type].forEach(function (weapon) {
+        weapon.diamond = false;
+      });
+    }
+
+    localStorage.setItem(typeValue, JSON.stringify(newData));
+
+    setDataValue(newData);
+
+    var newCamo = camo;
+
+    newCamo.current = e;
+
+    setCamo(newCamo);
   };
 
-  const onToggle = (data) => {
-    setName(data.name);
-    setDescription(data.description);
-    setCurrent(data.current);
-    setRequired(data.required);
-    setImage(data.image);
-    setIndex(data.index);
+  const onToggle = (camo, index) => {
+    setCamo(camo);
+    setCamoIndex(index);
   };
+
+  const onToggleCamo = () => {
+    console.log("here");
+    var newData = JSON.parse(localStorage.getItem(typeValue));
+
+    console.log(camo.completion);
+    if (camo.completion) {
+      newData[weapon.type][index].camos[camoIndex].completion = false;
+      newData[weapon.type][index].camos[camoIndex].current = 0;
+    } else {
+      newData[weapon.type][index].camos[camoIndex].completion = true;
+      newData[weapon.type][index].camos[camoIndex].current =
+        newData[weapon.type][index].camos[camoIndex].total;
+    }
+
+    console.log(newData[weapon.type][index]);
+    var goldCheck = checkEveryStatus(
+      newData[weapon.type][index].camos,
+      "completion",
+      true
+    );
+
+    console.log(goldCheck);
+
+    if (goldCheck) {
+      newData[weapon.type][index].gold = true;
+    } else {
+      newData[weapon.type][index].gold = false;
+    }
+
+    var diamondCheck = checkEveryStatus(newData[weapon.type], "gold", true);
+
+    if (diamondCheck) {
+      newData[weapon.type].forEach(function (weapon) {
+        weapon.diamond = true;
+      });
+    } else {
+      newData[weapon.type].forEach(function (weapon) {
+        weapon.diamond = false;
+      });
+    }
+
+    localStorage.setItem(typeValue, JSON.stringify(newData));
+
+    setDataValue(newData);
+
+    var newCamo = newData[weapon.type][index].camos[camoIndex];
+
+    setCamo(newCamo);
+  };
+
+  const onToggleGold = () => {
+    var newData = JSON.parse(localStorage.getItem(typeValue));
+
+    if (weapon.gold) {
+      newData[weapon.type][index].gold = false;
+    } else {
+      newData[weapon.type][index].gold = true;
+    }
+
+    var diamondCheck = checkEveryStatus(newData[weapon.type], "gold", true);
+
+    if (diamondCheck) {
+      newData[weapon.type].forEach(function (weapon) {
+        weapon.diamond = true;
+      });
+    } else {
+      newData[weapon.type].forEach(function (weapon) {
+        weapon.diamond = false;
+      });
+    }
+
+    localStorage.setItem(typeValue, JSON.stringify(newData));
+
+    setDataValue(newData);
+  };
+
   return (
     <>
       <div className={backgroundContainer}>
-        <div className="weapon-header-container">
-          <h2 className="weapon-header">{props.weapon.name}</h2>
-        </div>
+        <WeaponHeader header={weapon.name} />
+
         <div className="camos">
-          {props.weapon.camos.map((camo, index) => {
+          {weapon.camos.map((camo, cIndex) => {
             return (
               <Camo
-                index={index}
                 camo={camo}
-                id={props.weapon.name}
-                key={index}
+                id={weapon.name}
+                key={cIndex}
+                index={cIndex}
                 onToggle={onToggle}
               />
             );
           })}
         </div>
+        <div className="gold-button-container">
+          <button className={buttonBackground} onClick={onToggleGold}>
+            GOLD
+          </button>
+        </div>
       </div>
+
       <CamoCollapse
-        index={props.index}
-        weapon={props.weapon}
-        id={props.weapon.name}
-        name={name}
-        description={description}
-        current={current}
-        required={required}
-        image={image}
+        id={weapon.name}
+        camo={camo}
         changeCamo={camoProgressUpdate}
+        onToggleCamo={onToggleCamo}
       />
     </>
   );

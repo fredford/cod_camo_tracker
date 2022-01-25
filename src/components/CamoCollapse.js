@@ -1,29 +1,36 @@
-import React from "react";
-
+import React, { useContext } from "react";
 import { ProgressBar } from "react-bootstrap";
 
-export default function CamoCollapse({
-  id,
-  name,
-  description,
-  current,
-  required,
-  image,
-  changeCamo,
-}) {
-  var progressValue = (current / required) * 100;
+import { GameContext } from "../contexts/GameContext";
+import CamoImage from "./camo/CamoImage";
+import CamoHeader from "./layout/headers/CamoHeader";
 
-  var variantType = "";
-  var camoPath = "/atomic/camo.png";
+export default function CamoCollapse({ id, camo, changeCamo, onToggleCamo }) {
+  // Get data context
+  const { game, type, data } = useContext(GameContext);
+  const [typeValue, setTypeValue] = type;
 
-  if (image !== "") {
-    camoPath = "/atomic/" + image + ".png";
+  var buttonColor = "btn done-button ";
+
+  if (camo.completion) {
+    buttonColor += "done";
   }
 
-  if (progressValue === 100) {
+  // Progress percentage
+  var progressValue = (camo.current / camo.total) * 100;
+  // Set variant variable for success coloring
+  var variantType = "";
+  // Set the default image path for first render
+  var camoPath = `camo.png`;
+  // Set the camo image path
+  if (camo.image !== "") {
+    camoPath = `/${typeValue.toLowerCase()}/${camo.image}.png`;
+  }
+  // Check if the current progress meets the required total
+  if (camo.current >= camo.total) {
     variantType = "success";
   }
-
+  // Function to update the camo progress
   const inputChange = (e) => {
     if (isNaN(parseInt(e.target.value))) {
       changeCamo(0);
@@ -32,17 +39,30 @@ export default function CamoCollapse({
     }
   };
 
+  const toggleCamo = () => {
+    onToggleCamo();
+  };
+
   return (
     <div className="collapse" id={id}>
       <div className="card card-shadow camo-collapse">
-        <div className="camo-title-container">
-          <h3 className="camo-title">{name}</h3>
-          <h4 className="camo-subtitle">{description}</h4>
-        </div>
+        <CamoHeader name={camo.name} description={camo.description} />
         <div className="row">
           <div className="col-4">
-            <div className="camo-collapse-image-container">
-              <img className="camo-collapse-image" src={camoPath} alt="Here" />
+            <CamoImage path={camoPath} description={camo.description} />
+            <div className="done-button-container">
+              <button className={buttonColor} onClick={toggleCamo}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-check-lg"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                </svg>
+              </button>
             </div>
           </div>
           <div className="col-8">
@@ -55,7 +75,7 @@ export default function CamoCollapse({
             <div className="form-group">
               <input
                 id="formControlCamo"
-                value={current}
+                value={camo.current || 0}
                 className="form-control form-control-sm camo-input"
                 onChange={inputChange}
               ></input>
