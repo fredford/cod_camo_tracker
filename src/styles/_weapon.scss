@@ -5,8 +5,6 @@
   padding: 0 0.5rem 0 0.5rem;
 
   .weapon {
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    position: relative;
     border-radius: $border-radius;
     background-color: $background-color-1;
     padding: 1rem;
@@ -61,7 +59,7 @@
 }
 
 .gold-button {
-  border: 1px solid #feba24;
+  border: 1px solid rgba(#feba24, 0.5);
   width: 100%;
   font-weight: 600;
   font-size: 0.95rem;
@@ -73,5 +71,5 @@
 }
 
 .gold.gold-button {
-  color: $background-color-0 !important;
+  //color: $background-color-0 !important;
 }

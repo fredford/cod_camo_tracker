@@ -6,14 +6,16 @@ hr {
 
 .gold {
   background: linear-gradient(to bottom, #c39738, #deb761, #c39738);
+  box-shadow: inset 0 0 0 500px rgba($background-color-1, 0.5) !important;
 
   .weapon-header {
-    color: $background-color-0 !important;
+    //color: $background-color-0 !important;
   }
 }
 
 .diamond {
   background: linear-gradient(to bottom, #d5d7e5, #eee, #d5d7e5);
+  box-shadow: inset 0 0 0 500px rgba($background-color-1, 0.5) !important;
 
   .weapon-header {
     color: $background-color-0 !important;

@@ -12,7 +12,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0;
+  padding-left: 1.5rem;
 }
 
 .page-header-subtitle {
@@ -23,7 +23,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .page-controller-container {
@@ -41,9 +41,21 @@
   }
 
   .progress-bar {
-    background-color: $foreground-color-light;
+    background-color: rgba($foreground-color-light, 0.8);
     color: $background-color-2;
   }
+}
+
+.page-controller__completion {
+  width: 100%;
+  text-align: center;
+  margin: 0 0 2rem 0 !important;
+  color: $foreground-color-text;
+  background-color: green !important;
+  padding: 3rem !important;
+  font-size: 5rem;
+  font-weight: 900;
+  @include card-common;
 }
 
 .page-controller h2 {
@@ -63,4 +75,16 @@
 
 .page-controller #dropdown {
   background-color: $background-color-0;
+}
+
+.page-controller #checkbox {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba($foreground-color-light, 0.8);
+  border-radius: $border-radius;
+  background-color: $background-color-0;
+}
+
+.page-controller #checkbox.checked {
+  background-color: $foreground-color-light;
 }
