@@ -1,7 +1,9 @@
 .App {
   display: flex;
   justify-content: center;
-  background-color: $background-color-0;
+  //background-color: $background-color-0;
+  background: rgb(20,21,23);
+background: linear-gradient(180deg, rgba(20,21,23,1) 0%, rgba(44,46,55,1) 54%, rgba(62,73,113,1) 100%);
 }
 
 .card-shadow {
