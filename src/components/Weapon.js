@@ -11,10 +11,10 @@ export default function Weapon({ weapon, index }) {
   const [camo, setCamo] = useState({});
   const [camoIndex, setCamoIndex] = useState(0);
 
-  const { game, type, data } = useContext(GameContext);
+  const context = useContext(GameContext);
 
-  const [typeValue, setTypeValue] = type;
-  const [dataValue, setDataValue] = data;
+  const typeValue = context.type[0];
+  const setDataValue = context.data[1];
 
   var backgroundContainer = "card weapon ";
 

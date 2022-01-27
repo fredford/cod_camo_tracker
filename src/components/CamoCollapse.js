@@ -7,8 +7,8 @@ import CamoHeader from "./layout/headers/CamoHeader";
 
 export default function CamoCollapse({ id, camo, changeCamo, onToggleCamo }) {
   // Get data context
-  const { game, type, data } = useContext(GameContext);
-  const [typeValue, setTypeValue] = type;
+  const context = useContext(GameContext);
+  const typeValue = context.type[0];
 
   var buttonColor = "btn done-button ";
 
