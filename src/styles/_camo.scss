@@ -8,13 +8,6 @@
   height: auto;
 }
 
-.camo-image {
-  border-radius: $border-radius-inner;
-  border: 2px solid rgba($foreground-color-light, 0.5);
-  width: 100%;
-  height: auto;
-}
-
 .camo-button {
   padding: 0;
   height: 100%;
@@ -30,11 +23,11 @@
   }
 }
 
-.camo-spacer {
-  border-radius: 4px;
+.camo-image {
+  border-radius: $border-radius-inner;
+  border: 2px solid rgba($foreground-color-light, 0.5);
   width: 100%;
   height: 100%;
-  background: rgba($foreground-color-light, 0.5);
   object-fit: cover;
 }
 
