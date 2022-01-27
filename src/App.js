@@ -4,6 +4,8 @@ import Atomic from "./pages/Atomic";
 import DMUltra from "./pages/DMUltra";
 import { GameProvider } from "./contexts/GameContext";
 
+import Footer from "./components/layout/containers/Footer";
+
 import "./styles/styles.scss";
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
       <GameProvider>
         <Atomic />
       </GameProvider>
+
+      <Footer />
     </div>
   );
 }

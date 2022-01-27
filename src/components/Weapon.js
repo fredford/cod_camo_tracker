@@ -12,6 +12,7 @@ export default function Weapon({ weapon, index }) {
   const [camoIndex, setCamoIndex] = useState(0);
 
   const { game, type, data } = useContext(GameContext);
+
   const [typeValue, setTypeValue] = type;
   const [dataValue, setDataValue] = data;
 
@@ -93,7 +94,6 @@ export default function Weapon({ weapon, index }) {
         newData[weapon.type][index].camos[camoIndex].total;
     }
 
-    console.log(newData[weapon.type][index]);
     var goldCheck = checkEveryStatus(
       newData[weapon.type][index].camos,
       "completion",
@@ -153,6 +153,8 @@ export default function Weapon({ weapon, index }) {
     setDataValue(newData);
   };
 
+  var id = "w".concat(weapon.name.toLowerCase().replace(/\s/g, ""));
+
   return (
     <>
       <div className={backgroundContainer}>
@@ -179,7 +181,7 @@ export default function Weapon({ weapon, index }) {
       </div>
 
       <CamoCollapse
-        id={weapon.name}
+        id={id}
         camo={camo}
         changeCamo={camoProgressUpdate}
         onToggleCamo={onToggleCamo}

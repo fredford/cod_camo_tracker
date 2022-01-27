@@ -1,4 +1,7 @@
 .camo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   aspect-ratio: auto 1/1;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   border-radius: $border-radius;
@@ -12,8 +15,30 @@
 }
 
 .camo-button {
-  border: none;
-  background-color: #fff;
-  text-align: center;
   padding: 0;
+  height: 100%;
+}
+
+.camo:hover {
+  background: rgba($foreground-color-light, 1);
+  z-index: 2;
+
+  .camo-check {
+    color: $background-color-1;
+  }
+}
+
+.camo-spacer {
+  border-radius: 4px;
+  width: 100%;
+  height: auto;
+  background: rgba($foreground-color-light, 0.5);
+}
+
+.camo-check {
+  align-items: center;
+  color: rgba($foreground-color-light, 0.5);
+  border: 2px rgba($foreground-color-light, 0.5);
+  width: 100%;
+  height: auto;
 }
