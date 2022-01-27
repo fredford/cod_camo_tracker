@@ -9,12 +9,12 @@ export default function Camo({ camo, id, onToggle, index }) {
     onToggle(camo, index);
   };
 
-  var camoCheck = "camo-check bi bi-check-square-fill d-none";
+  var camoCheck = "camo-check d-none";
   var camoImage = "camo-image ";
 
   if (camo.completion) {
-    camoCheck = "camo-check bi bi-check-square-fill";
-    camoImage += "d-none";
+    camoCheck = "camo-check";
+    camoImage = "camo-image d-none";
   }
 
   return (

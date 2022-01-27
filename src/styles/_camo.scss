@@ -15,12 +15,13 @@
 }
 
 .camo:hover {
-  background: rgba($foreground-color-light, 1);
-  z-index: 2;
+  .camo-image {
+    border: 2px solid rgba($foreground-color-light, 1);
+  }
 
   .camo-check {
-    color: $background-color-1;
-    border: 2px rgba($foreground-color-light, 1);
+    filter: invert(88%) sepia(40%) saturate(4924%) hue-rotate(188deg)
+      brightness(98%) contrast(91%);
   }
 }
 
@@ -33,11 +34,9 @@
 }
 
 .camo-check {
-  color: rgba($foreground-color-light, 0.5);
-  border: 2px rgba($foreground-color-light, 0.5);
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: invert(88%) sepia(40%) saturate(4924%) hue-rotate(188deg)
-    brightness(98%) contrast(91%);
+    brightness(98%) contrast(91%) opacity(50%);
 }
