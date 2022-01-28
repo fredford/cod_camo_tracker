@@ -20,7 +20,6 @@ export default function Camo({ camo, id, onToggle, index }) {
   return (
     <div className="camo">
       <div
-        type="button"
         data-bs-toggle="collapse"
         data-bs-target={target}
         aria-expanded="false"
