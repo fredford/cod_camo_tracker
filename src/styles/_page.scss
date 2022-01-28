@@ -88,3 +88,17 @@
 .page-controller #checkbox.checked {
   background-color: $foreground-color-light;
 }
+
+.delete-button {
+  color: rgba($foreground-color-light, 0.8);
+  background-color: $background-color-0;
+  border: 1px solid rgba($foreground-color-light, 0.8);
+  border-radius: $border-radius;
+  padding: 0.5rem;
+}
+
+.delete-button:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: $background-color-0;
+}

@@ -60,6 +60,14 @@ export default function Atomic() {
     setShowCompleted(!showCompleted);
   };
 
+  const resetData = () => {
+    console.log("here");
+    localStorage.removeItem("Atomic");
+    localStorage.setItem("Atomic", JSON.stringify(tempData));
+    showData = tempData;
+    window.location.reload();
+  };
+
   React.useEffect(() => {
     setGameValue("Call of Duty: Vanguard");
     setTypeValue("Atomic");
@@ -73,6 +81,7 @@ export default function Atomic() {
         count={count}
         toggleCompleted={toggleCompleted}
         show={showCompleted}
+        resetData={resetData}
       />
       {Object.entries(showData).map(([key, value]) => {
         // Only show selected sections
