@@ -3,7 +3,7 @@ import camoOriginals from "./camoOriginals"
 import {dataCombiner} from "../../utilities"
 
 // Combining all of the data into a single object for Vanguard: Atomic
-export default {
+ const weapons = {
     "Assault Rifles": [
         ...dataCombiner("Assault Rifles", 70, camoOriginals["Assault Rifles"]),
     ],
@@ -32,14 +32,7 @@ export default {
         ...dataCombiner("Melee", 1, camoOriginals["Melee"])
     ]
 
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-;
+};
+
+
+export default weapons
