@@ -21,8 +21,3 @@ const weapons = {
 };
 
 export default weapons;
-
-export const goldToDiamond = {
-  "Assault Rifles": 7,
-  "Submachine Guns": 6,
-};

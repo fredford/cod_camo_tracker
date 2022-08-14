@@ -1,10 +1,12 @@
+// Library imports
 import React, { useContext, useState } from "react";
+// Local components
 import Camo from "./Camo";
 import CamoCollapse from "./CamoCollapse";
-
-import { GameContext } from "../contexts/GameContext";
 import WeaponHeader from "./layout/headers/WeaponHeader";
-
+// Contexts
+import { GameContext } from "../contexts/GameContext";
+// Utilities
 import { checkEveryStatus } from "../utilities";
 
 export default function Weapon({ weapon, index }) {

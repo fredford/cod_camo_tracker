@@ -1,12 +1,18 @@
 import React from "react";
 import { createContext, useState } from "react";
 
+import weaponsAtomic from "../data/atomic/weapons/index";
+
 export const GameContext = createContext();
 
 export const GameProvider = (props) => {
-  const [game, setGame] = useState("");
-  const [type, setType] = useState("");
-  const [data, setData] = useState({});
+  let localData = JSON.parse(localStorage.getItem(props.type));
+
+  if (!localData) localStorage.setItem(props.type, JSON.stringify(typeWeapons[props.type]));
+
+  const [game, setGame] = useState(props.game);
+  const [type, setType] = useState(props.type);
+  const [data, setData] = useState(localData ? localData : typeWeapons[props.type]);
 
   return (
     <GameContext.Provider
@@ -15,4 +21,8 @@ export const GameProvider = (props) => {
       {props.children}
     </GameContext.Provider>
   );
+};
+
+const typeWeapons = {
+  Atomic: weaponsAtomic,
 };
