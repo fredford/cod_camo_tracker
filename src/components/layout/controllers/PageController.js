@@ -7,6 +7,7 @@ export default function PageController({
   toggleCompleted,
   show,
   resetData,
+  updateData,
 }) {
   var progress = Math.round((count / total) * 100 * 10) / 10;
 
@@ -26,6 +27,10 @@ export default function PageController({
     resetData();
   };
 
+  const toggleUpdate = () => {
+    updateData();
+  };
+
   return (
     <div className="page-controller-container">
       <div className="page-controller__progressbar">
@@ -38,17 +43,20 @@ export default function PageController({
           <div className="col-4">
             <div id="bar" />
             <h2>Show Completed</h2>
-            <button
-              className={showCompletedButton}
-              id="checkbox"
-              onClick={toggleCompleted}
-            />
+            <button className={showCompletedButton} id="checkbox" onClick={toggleCompleted} />
           </div>
           <div className="col-4">
             <div id="bar" />
             <h2>Reset Data</h2>
             <button className="delete-button" onClick={toggleReset}>
               DELETE
+            </button>
+          </div>
+          <div className="col-4">
+            <div id="bar" />
+            <h2>Update Data</h2>
+            <button className="delete-button" onClick={toggleUpdate}>
+              UPDATE
             </button>
           </div>
         </div>
