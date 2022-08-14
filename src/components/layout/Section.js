@@ -1,19 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Weapon from "../Weapon";
 import SectionContainer from "./containers/SectionContainer";
 import SectionHeader from "./headers/SectionHeader";
 
-export default function Section({ name, weaponsList, showCompleted }) {
+const Section = ({ weaponGroup, showCompleted }) => {
   return (
-    <>
-      <SectionHeader name={name} />
+    <Fragment>
+      <SectionHeader name={weaponGroup.name} />
       <SectionContainer>
-        {weaponsList.map((weapon, index) => {
+        {weaponGroup.weapons.map((weapon, index) => {
           if ((!showCompleted && !weapon.gold) || showCompleted) {
             return <Weapon key={weapon.name} weapon={weapon} index={index} />;
+          } else {
+            return <Fragment></Fragment>;
           }
         })}
       </SectionContainer>
-    </>
+    </Fragment>
   );
-}
+};
+
+export default Section;

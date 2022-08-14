@@ -42,11 +42,7 @@ export default function Weapon({ weapon, index }) {
       newData[weapon.type][index].camos[camoIndex].completion = false;
     }
 
-    var goldCheck = checkEveryStatus(
-      newData[weapon.type][index].camos,
-      "completion",
-      true
-    );
+    var goldCheck = checkEveryStatus(newData[weapon.type][index].camos, "completion", true);
 
     if (goldCheck) {
       newData[weapon.type][index].gold = true;
@@ -94,11 +90,7 @@ export default function Weapon({ weapon, index }) {
         newData[weapon.type][index].camos[camoIndex].total;
     }
 
-    var goldCheck = checkEveryStatus(
-      newData[weapon.type][index].camos,
-      "completion",
-      true
-    );
+    var goldCheck = checkEveryStatus(newData[weapon.type][index].camos, "completion", true);
 
     if (goldCheck) {
       newData[weapon.type][index].gold = true;
@@ -163,13 +155,7 @@ export default function Weapon({ weapon, index }) {
         <div className="camos">
           {weapon.camos.map((camo, cIndex) => {
             return (
-              <Camo
-                camo={camo}
-                id={weapon.name}
-                key={cIndex}
-                index={cIndex}
-                onToggle={onToggle}
-              />
+              <Camo camo={camo} id={weapon.name} key={cIndex} index={cIndex} onToggle={onToggle} />
             );
           })}
         </div>

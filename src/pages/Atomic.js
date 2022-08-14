@@ -6,9 +6,9 @@ import Section from "../components/layout/Section";
 import PageHeader from "../components/layout/headers/PageHeader";
 import PageController from "../components/layout/controllers/PageController";
 import { GameContext } from "../contexts/GameContext";
-import tempData from "../data/atomic/weapons";
 
 import weapons from "../data/atomic/weapons/index";
+import { WeaponGroup } from "../utilities/WeaponFactory";
 
 export default function Atomic() {
   const [showCompleted, setShowCompleted] = useState(true);
@@ -41,13 +41,21 @@ export default function Atomic() {
     showData = JSON.parse(localStorage.getItem("Atomic"));
   }
 
+  let weaponGroups = [];
+
+  Object.keys(showData).forEach((key) => {
+    const wg = new WeaponGroup(key, showData[key]);
+    weaponGroups.push(wg);
+  });
+
   // Total and count variables to track camo progress
   let total = 0;
   let count = 0;
 
   // Loop to check the number of camos in the system and how many are completed
   for (const sectionName in showData) {
-    showData[sectionName].forEach(function (weapon) {
+    // eslint-disable-next-line no-loop-func
+    showData[sectionName].forEach((weapon) => {
       total += weapon.camos.length;
       // If a weapon is gold then the count is equal to the length
       if (weapon.gold) {
@@ -76,7 +84,7 @@ export default function Atomic() {
   });
 
   const updateData = () => {
-    Object.keys(weapons).map((weaponType) => {
+    Object.keys(weapons).forEach((weaponType) => {
       if (weapons[weaponType].length !== savedData[weaponType].length) {
         let weaponGroup = weapons[weaponType];
 
@@ -91,9 +99,6 @@ export default function Atomic() {
     localStorage.setItem("Atomic", JSON.stringify(savedData));
     window.location.reload();
   };
-
-  console.log(showData);
-
   return (
     <div className="atomic">
       <PageHeader />
@@ -105,10 +110,10 @@ export default function Atomic() {
         resetData={resetData}
         updateData={updateData}
       />
-      {Object.entries(showData).map(([key, value]) => {
+      {weaponGroups.map((weaponGroup, index) => {
         // Only show selected sections
-        if ((!showCompleted && !value[0].diamond) || showCompleted) {
-          return <Section key={key} name={key} weaponsList={value} showCompleted={showCompleted} />;
+        if ((!showCompleted && !weaponGroup.diamond) || showCompleted) {
+          return <Section key={index} weaponGroup={weaponGroup} showCompleted={showCompleted} />;
         }
         return <></>;
       })}
