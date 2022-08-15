@@ -1,22 +1,20 @@
 // Library imports
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 // Local components
 import Camo from "./Camo";
 import CamoCollapse from "./CamoCollapse";
 import WeaponHeader from "./layout/headers/WeaponHeader";
-// Contexts
-import { GameContext } from "../contexts/GameContext";
 // Utilities
 import { checkEveryStatus } from "../utilities";
 
-export default function Weapon({ weapon, index }) {
+const areEqual = (prevProp, nextProp) => {
+  return true;
+};
+
+const Weapon = ({ weapon, index, typeValue, setDataValue }) => {
+  // Set component state
   const [camo, setCamo] = useState({});
   const [camoIndex, setCamoIndex] = useState(0);
-
-  const context = useContext(GameContext);
-
-  const typeValue = context.type[0];
-  const setDataValue = context.data[1];
 
   var backgroundContainer = "card weapon ";
 
@@ -176,4 +174,6 @@ export default function Weapon({ weapon, index }) {
       />
     </>
   );
-}
+};
+
+export default React.memo(Weapon, areEqual);
