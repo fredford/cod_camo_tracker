@@ -8,7 +8,18 @@ import { GameContext } from "../../contexts/GameContext";
 const Section = ({ weaponGroup, showCompleted }) => {
   const context = useContext(GameContext);
   const typeValue = context.type[0];
-  const setDataValue = context.data[1];
+  const [dataValue, setDataValue] = context.data;
+
+  const updateData = (weapon, checkType) => {
+    let cloneData = Object.assign(Object.create(Object.getPrototypeOf(dataValue)), dataValue);
+
+    weaponGroup.checkForDiamond();
+
+    cloneData.weaponGroups[weapon.type].weapons[weapon.name] = weapon;
+
+    setDataValue(cloneData);
+    localStorage.setItem(typeValue, JSON.stringify(cloneData));
+  };
 
   return (
     <Fragment>
@@ -16,15 +27,16 @@ const Section = ({ weaponGroup, showCompleted }) => {
         <h2>{weaponGroup.name}</h2>
       </div>
       <div className="container-weapons">
-        {weaponGroup.weapons.map((weapon, index) => {
+        {Object.entries(weaponGroup.weapons).map(([name, weapon]) => {
           if ((!showCompleted && !weapon.gold) || showCompleted) {
             return (
               <Weapon
                 key={JSON.stringify(weapon)}
                 weapon={weapon}
-                index={index}
+                index={name}
                 typeValue={typeValue}
                 setDataValue={setDataValue}
+                updateData={updateData}
               />
             );
           } else {

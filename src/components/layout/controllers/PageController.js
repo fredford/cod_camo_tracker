@@ -19,10 +19,8 @@ export default function PageController({ toggleCompleted, show }) {
     let total = 0;
     let count = 0;
 
-    // Loop to check the number of camos in the system and how many are completed
-    for (const sectionName in data[0]) {
-      // eslint-disable-next-line no-loop-func
-      data[0][sectionName].forEach((weapon) => {
+    Object.values(data[0].weaponGroups).forEach((section) => {
+      Object.values(section.weapons).forEach((weapon) => {
         total += weapon.camos.length;
         // If a weapon is gold then the count is equal to the length
         if (weapon.gold) {
@@ -31,7 +29,8 @@ export default function PageController({ toggleCompleted, show }) {
           count += weapon.camos.filter((camo) => camo.completion === true).length;
         }
       });
-    }
+    });
+
     setProgress(Math.round((count / total) * 100 * 10) / 10);
   }, [data, stringData]);
 
