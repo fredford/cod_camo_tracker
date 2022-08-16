@@ -1,20 +1,22 @@
+// Library imports
 import React, { useContext } from "react";
 import { ProgressBar } from "react-bootstrap";
-
+// Contexts
 import { GameContext } from "../contexts/GameContext";
+// Local imports
 import CamoImage from "./camo/CamoImage";
 import CamoHeader from "./layout/headers/CamoHeader";
 
-export default function CamoCollapse({ id, camo, changeCamo, onToggleCamo }) {
+const CamoCollapse = ({ id, camo, changeCamo, onToggleCamo, show, value, setValue }) => {
   // Get data context
   const context = useContext(GameContext);
   const typeValue = context.type[0];
 
+  // Button color class
   var buttonColor = "btn done-button ";
 
-  if (camo.completion) {
-    buttonColor += "done";
-  }
+  // Add done class to button color
+  if (camo.completion) buttonColor += "done";
 
   // Progress percentage
   var progressValue = (camo.current / camo.total) * 100;
@@ -33,18 +35,30 @@ export default function CamoCollapse({ id, camo, changeCamo, onToggleCamo }) {
   // Function to update the camo progress
   const inputChange = (e) => {
     if (isNaN(parseInt(e.target.value))) {
-      changeCamo(0);
+      //changeCamo(0);
+      setValue(0);
     } else {
-      changeCamo(parseInt(e.target.value));
+      //changeCamo(parseInt(e.target.value));
+      setValue(parseInt(e.target.value));
     }
   };
 
+  // Show or collapse camo component
+  let className = "collapse";
+  className += show ? " show" : "";
+
+  // Toggle completion of the camo
   const toggleCamo = () => {
     onToggleCamo();
   };
 
+  // Button to update the camo progress
+  const updateCamo = () => {
+    changeCamo(value);
+  };
+
   return (
-    <div className="collapse" id={id}>
+    <div className={className} id={id}>
       <div className="card card-shadow camo-collapse">
         <CamoHeader name={camo.name} description={camo.description} />
         <div className="row">
@@ -75,14 +89,19 @@ export default function CamoCollapse({ id, camo, changeCamo, onToggleCamo }) {
             <div className="form-group">
               <input
                 id="formControlCamo"
-                value={camo.current || 0}
+                value={value}
                 className="form-control form-control-sm camo-input"
                 onChange={inputChange}
               ></input>
             </div>
+            <button className="btn done-button" onClick={updateCamo}>
+              Update
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default CamoCollapse;

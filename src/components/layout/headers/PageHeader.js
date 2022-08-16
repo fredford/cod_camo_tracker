@@ -5,8 +5,8 @@ import { GameContext } from "../../../contexts/GameContext";
 export default function PageHeader() {
   const { game, type } = useContext(GameContext);
 
-  const [gameValue, setGameValue] = game;
-  const [typeValue, setTypeValue] = type;
+  const gameValue = game[0];
+  const typeValue = type[0];
 
   return (
     <div className="page-header-container">

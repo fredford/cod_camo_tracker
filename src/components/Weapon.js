@@ -1,25 +1,26 @@
-import React, { useContext, useState } from "react";
+// Library imports
+import React, { useState } from "react";
+// Local components
 import Camo from "./Camo";
 import CamoCollapse from "./CamoCollapse";
 
-import { GameContext } from "../contexts/GameContext";
-import WeaponHeader from "./layout/headers/WeaponHeader";
+const areEqual = (prevProp, nextProp) => {
+  return true;
+};
 
-import { checkEveryStatus } from "../utilities";
-
-export default function Weapon({ weapon, index }) {
+const Weapon = ({ weapon, index, typeValue, setDataValue, updateData }) => {
+  // Set component state
   const [camo, setCamo] = useState({});
-  const [camoIndex, setCamoIndex] = useState(0);
+  const [show, setShow] = useState(false);
+  // State for the camo value used in tracking individual item progress
+  const [value, setValue] = useState(0);
 
-  const context = useContext(GameContext);
-
-  const typeValue = context.type[0];
-  const setDataValue = context.data[1];
-
+  // Class properties for the weapon card
   var backgroundContainer = "card weapon ";
-
+  // Button background color
   var buttonBackground = "btn gold-button ";
 
+  // Check if the weapon is gold or diamond and change the background colors accordingly
   if (weapon.diamond) {
     backgroundContainer += "diamond";
     buttonBackground += "gold";
@@ -28,138 +29,63 @@ export default function Weapon({ weapon, index }) {
     buttonBackground += "gold";
   }
 
+  /**
+   * Function to update the progress of the weapon group for camo changes
+   */
   const camoProgressUpdate = (e) => {
-    var newData = JSON.parse(localStorage.getItem(typeValue));
-
-    newData[weapon.type][index].camos[camoIndex].current = e;
-
-    var current = newData[weapon.type][index].camos[camoIndex].current;
-    var total = newData[weapon.type][index].camos[camoIndex].total;
-
-    if (current >= total) {
-      newData[weapon.type][index].camos[camoIndex].completion = true;
-    } else {
-      newData[weapon.type][index].camos[camoIndex].completion = false;
-    }
-
-    var goldCheck = checkEveryStatus(
-      newData[weapon.type][index].camos,
-      "completion",
-      true
-    );
-
-    if (goldCheck) {
-      newData[weapon.type][index].gold = true;
-    } else {
-      newData[weapon.type][index].gold = false;
-    }
-
-    var diamondCheck = checkEveryStatus(newData[weapon.type], "gold", true);
-
-    if (diamondCheck) {
-      newData[weapon.type].forEach(function (weapon) {
-        weapon.diamond = true;
-      });
-    } else {
-      newData[weapon.type].forEach(function (weapon) {
-        weapon.diamond = false;
-      });
-    }
-
-    localStorage.setItem(typeValue, JSON.stringify(newData));
-
-    setDataValue(newData);
-
-    var newCamo = camo;
-
-    newCamo.current = e;
-
-    setCamo(newCamo);
+    // Update the camo progress
+    camo.current = e;
+    // Check completion status of camo
+    camo.updateCompletion();
+    // Check completion status of weapon
+    weapon.checkForGold();
+    // Update the Weapon group state for the weapon
+    updateData(weapon);
+    // Set the state of Camo for the updated camo
+    setCamo(camo);
   };
 
+  /**
+   * Function to set the Camo object to the current state
+   * @param {object} camo - Camo object to be displayed
+   * @param {number} index - Index of the camo in the camos array
+   */
   const onToggle = (camo, index) => {
     setCamo(camo);
-    setCamoIndex(index);
+    setValue(camo.current);
   };
 
+  /**
+   * Function to toggle completion on the camo
+   */
   const onToggleCamo = () => {
-    var newData = JSON.parse(localStorage.getItem(typeValue));
-
-    if (camo.completion) {
-      newData[weapon.type][index].camos[camoIndex].completion = false;
-      newData[weapon.type][index].camos[camoIndex].current = 0;
-    } else {
-      newData[weapon.type][index].camos[camoIndex].completion = true;
-      newData[weapon.type][index].camos[camoIndex].current =
-        newData[weapon.type][index].camos[camoIndex].total;
-    }
-
-    var goldCheck = checkEveryStatus(
-      newData[weapon.type][index].camos,
-      "completion",
-      true
-    );
-
-    if (goldCheck) {
-      newData[weapon.type][index].gold = true;
-    } else {
-      newData[weapon.type][index].gold = false;
-    }
-
-    var diamondCheck = checkEveryStatus(newData[weapon.type], "gold", true);
-
-    if (diamondCheck) {
-      newData[weapon.type].forEach(function (weapon) {
-        weapon.diamond = true;
-      });
-    } else {
-      newData[weapon.type].forEach(function (weapon) {
-        weapon.diamond = false;
-      });
-    }
-
-    localStorage.setItem(typeValue, JSON.stringify(newData));
-
-    setDataValue(newData);
-
-    var newCamo = newData[weapon.type][index].camos[camoIndex];
-
-    setCamo(newCamo);
+    // Change boolean status of completion
+    camo.toggleCompletion();
+    // Check if this action updates the Gold status
+    weapon.checkForGold();
+    // Update the weapon with the Context data
+    updateData(weapon);
   };
 
+  /**
+   * Function to toggle Gold on the weapon
+   */
   const onToggleGold = () => {
-    var newData = JSON.parse(localStorage.getItem(typeValue));
-
-    if (weapon.gold) {
-      newData[weapon.type][index].gold = false;
-    } else {
-      newData[weapon.type][index].gold = true;
-    }
-
-    var diamondCheck = checkEveryStatus(newData[weapon.type], "gold", true);
-
-    if (diamondCheck) {
-      newData[weapon.type].forEach(function (weapon) {
-        weapon.diamond = true;
-      });
-    } else {
-      newData[weapon.type].forEach(function (weapon) {
-        weapon.diamond = false;
-      });
-    }
-
-    localStorage.setItem(typeValue, JSON.stringify(newData));
-
-    setDataValue(newData);
+    // Call class method to toggle Gold on the weapon
+    weapon.toggleGold();
+    // Update weapon with the weapon group
+    updateData(weapon);
   };
 
+  // Set the id for the camo
   var id = "w".concat(weapon.name.toLowerCase().replace(/\s/g, ""));
 
   return (
     <>
       <div className={backgroundContainer}>
-        <WeaponHeader header={weapon.name} />
-
+        <div className="weapon-header-container">
+          <h2 className="weapon-header">{weapon.name}</h2>
+        </div>
         <div className="camos">
           {weapon.camos.map((camo, cIndex) => {
             return (
@@ -169,6 +95,8 @@ export default function Weapon({ weapon, index }) {
                 key={cIndex}
                 index={cIndex}
                 onToggle={onToggle}
+                setShow={setShow}
+                show={show}
               />
             );
           })}
@@ -183,9 +111,14 @@ export default function Weapon({ weapon, index }) {
       <CamoCollapse
         id={id}
         camo={camo}
+        show={show}
         changeCamo={camoProgressUpdate}
         onToggleCamo={onToggleCamo}
+        value={value}
+        setValue={setValue}
       />
     </>
   );
-}
+};
+
+export default React.memo(Weapon, areEqual);

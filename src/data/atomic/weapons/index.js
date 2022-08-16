@@ -9,15 +9,17 @@ import { sniperRifles } from "./sniperRifles";
 import { submachineGuns } from "./submachineGuns";
 
 const weapons = {
-  ...assaultRifles,
-  ...submachineGuns,
-  ...shotguns,
-  ...lightMachineGuns,
-  ...marksmenRifles,
-  ...sniperRifles,
-  ...handguns,
-  ...launchers,
-  ...melee,
+  weaponGroups: {
+    ...assaultRifles,
+    ...submachineGuns,
+    ...shotguns,
+    ...lightMachineGuns,
+    ...marksmenRifles,
+    ...sniperRifles,
+    ...handguns,
+    ...launchers,
+    ...melee,
+  },
 };
 
 export default weapons;

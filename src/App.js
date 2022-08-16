@@ -10,7 +10,7 @@ import "./styles/styles.scss";
 function App() {
   return (
     <div className="App">
-      <GameProvider>
+      <GameProvider game="Call of Duty: Vanguard" type="Atomic">
         <Atomic />
       </GameProvider>
 
