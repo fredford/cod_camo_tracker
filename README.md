@@ -7,8 +7,6 @@
 <p align="center">Chase those camo challenges</p>
 <p align="center"><a href="https://codcamotracker.vercel.app/">https://codcamotracker.vercel.app/</p>
 
-# COD Camo Tracker
-
 ## Description
 
 This application was created to provide a method for tracking a user's progress in collecting Camos from the video-game series Call of Duty. This was done as the in-game system for tracking your progress is limited and requires a high number of menu swapping. The application solves this problem by displaying all of the challenge requirements, and your current progress points.
