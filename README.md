@@ -1,8 +1,13 @@
+<p align="center">
+    <a href="https://codcamotracker.vercel.app/">
+        <img src="https://user-images.githubusercontent.com/57697667/184785918-4c1ce0d3-db03-4e18-88ee-0aaff5892524.png" width="150px"/>
+    </a>
+</p>
+<h1 align="center">COD Camo Tracker</h1>
+<p align="center">Chase those camo challenges</p>
+<p align="center"><a href="https://codcamotracker.vercel.app/">https://codcamotracker.vercel.app/</p>
+
 # COD Camo Tracker
-
-## Live Website
-
-https://codcamotracker.vercel.app/
 
 ## Description
 
