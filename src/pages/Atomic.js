@@ -14,13 +14,6 @@ export default function Atomic() {
   const dataObj = data[0];
   // Set state for completion showing
   const [showCompleted, setShowCompleted] = useState(true);
-
-  // Set the weapon data into class objects
-  //Object.keys(dataValue).forEach((key) => {
-  //  const wg = new WeaponGroup(key, dataValue[key]);
-  //  weaponGroups.push(wg);
-  //});
-
   // Toggle if completed weapons are shown
   const toggleCompleted = () => {
     setShowCompleted(!showCompleted);

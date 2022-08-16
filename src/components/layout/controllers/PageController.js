@@ -36,11 +36,11 @@ export default function PageController({ toggleCompleted, show }) {
 
   // CSS class modifications
   var completionVisibility = "page-controller__completion ";
-
+  // While progression is under 100% don't show success banner
   if (progress < 100) completionVisibility += "d-none";
-
+  // Show completed button class for modifications
   var showCompletedButton = "page-controller__show-completed ";
-
+  // Add checked when the user wants to show their completed camos
   if (show) showCompletedButton += "checked";
 
   // Function update the localStorage data

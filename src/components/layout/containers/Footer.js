@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer() {
+const Footer = React.memo(() => {
   return (
     <>
       <hr />
@@ -23,4 +23,6 @@ export default function Footer() {
       </div>
     </>
   );
-}
+});
+
+export default Footer;

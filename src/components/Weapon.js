@@ -1,11 +1,8 @@
 // Library imports
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 // Local components
 import Camo from "./Camo";
 import CamoCollapse from "./CamoCollapse";
-import WeaponHeader from "./layout/headers/WeaponHeader";
-// Utilities
-import { checkEveryStatus } from "../utilities";
 
 const areEqual = (prevProp, nextProp) => {
   return true;
@@ -14,12 +11,16 @@ const areEqual = (prevProp, nextProp) => {
 const Weapon = ({ weapon, index, typeValue, setDataValue, updateData }) => {
   // Set component state
   const [camo, setCamo] = useState({});
-  const [camoIndex, setCamoIndex] = useState(0);
+  const [show, setShow] = useState(false);
+  // State for the camo value used in tracking individual item progress
+  const [value, setValue] = useState(0);
 
+  // Class properties for the weapon card
   var backgroundContainer = "card weapon ";
-
+  // Button background color
   var buttonBackground = "btn gold-button ";
 
+  // Check if the weapon is gold or diamond and change the background colors accordingly
   if (weapon.diamond) {
     backgroundContainer += "diamond";
     buttonBackground += "gold";
@@ -28,19 +29,21 @@ const Weapon = ({ weapon, index, typeValue, setDataValue, updateData }) => {
     buttonBackground += "gold";
   }
 
-  console.log(camo, camoIndex);
-
-  const camoProgressUpdate = useCallback((e) => {
+  /**
+   * Function to update the progress of the weapon group for camo changes
+   */
+  const camoProgressUpdate = (e) => {
+    // Update the camo progress
     camo.current = e;
-
+    // Check completion status of camo
     camo.updateCompletion();
-
+    // Check completion status of weapon
     weapon.checkForGold();
-
+    // Update the Weapon group state for the weapon
     updateData(weapon);
-
+    // Set the state of Camo for the updated camo
     setCamo(camo);
-  });
+  };
 
   /**
    * Function to set the Camo object to the current state
@@ -49,7 +52,7 @@ const Weapon = ({ weapon, index, typeValue, setDataValue, updateData }) => {
    */
   const onToggle = (camo, index) => {
     setCamo(camo);
-    setCamoIndex(index);
+    setValue(camo.current);
   };
 
   /**
@@ -74,17 +77,27 @@ const Weapon = ({ weapon, index, typeValue, setDataValue, updateData }) => {
     updateData(weapon);
   };
 
+  // Set the id for the camo
   var id = "w".concat(weapon.name.toLowerCase().replace(/\s/g, ""));
 
   return (
     <>
       <div className={backgroundContainer}>
-        <WeaponHeader header={weapon.name} />
-
+        <div className="weapon-header-container">
+          <h2 className="weapon-header">{weapon.name}</h2>
+        </div>
         <div className="camos">
           {weapon.camos.map((camo, cIndex) => {
             return (
-              <Camo camo={camo} id={weapon.name} key={cIndex} index={cIndex} onToggle={onToggle} />
+              <Camo
+                camo={camo}
+                id={weapon.name}
+                key={cIndex}
+                index={cIndex}
+                onToggle={onToggle}
+                setShow={setShow}
+                show={show}
+              />
             );
           })}
         </div>
@@ -98,8 +111,11 @@ const Weapon = ({ weapon, index, typeValue, setDataValue, updateData }) => {
       <CamoCollapse
         id={id}
         camo={camo}
+        show={show}
         changeCamo={camoProgressUpdate}
         onToggleCamo={onToggleCamo}
+        value={value}
+        setValue={setValue}
       />
     </>
   );
